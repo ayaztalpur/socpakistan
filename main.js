@@ -21,7 +21,7 @@ var index= DATA.indexOf(myid);
               if (index >-1){
                   DATA.splice(index,1);
                   RenderJSON(DATA);
-               save(DATA); 
+                     save(DATA); 
 
 	}
               });
@@ -29,32 +29,17 @@ var index= DATA.indexOf(myid);
     }
     function save(){
    //localStorage.myData = JSON.stringify(DATA);
-$.ajax({
-      url: 'http://datastore.asadmemon.com/path/to/data', 
-      type: 'POST', 
-      contentType: 'application/json', 
-      data: JSON.stringify(DATA),
-  success:function(res){console.log(res);}
-  });
-
+   $.ajax({
+	    url: 'http://datastore.asadmemon.com/path/to/data', 
+	    type: 'POST', 
+	    contentType: 'application/json', 
+	    data: JSON.stringify({number:22,date: new Date()}),
+	success:function(res){console.log(res);}
+	});
 }
 function load() {
-//DATA = JSON.parse(localStorage.myData);
-//RenderJSON(DATA);
-
-$.get('http://datastore.asadmemon.com/path/to/data',function(res){
-    
-
-    DATA=res
-    RenderJSON(DATA);
-  })
+DATA = JSON.parse(localStorage.myData);
+RenderJSON(DATA);
 }
+
 load();
-//$.get('http://datastore.asadmemon.com/path/to/data',function(res){
-  //  console.log(res);
-  //});
-
-
-
-
-
